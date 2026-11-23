@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CheDataCheck FinOps — KI-Token &amp; SaaS-Lizenz-Waste-Auditor (100 % lokal)</title>
+  <meta name="description" content="Ungenutzte SaaS-Lizenzen, doppelte Tool-Kategorien, Renewal-Alerts &amp; KI-Token-Downgrade-Potenziale lokal berechnen." />
+  <link rel="canonical" href="https://cheresonanz-design.github.io/chedatacheck-finops-audit/" />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "CheDataCheck FinOps", "applicationCategory": "BusinessApplication", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "url": "https://cheresonanz-design.github.io/chedatacheck-finops-audit/"}</script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand-mark" href="index.html"><span>CheDataCheck FinOps</span><span class="brand-badge">FINOPS · TOKENS · SAAS</span></a>
+      <nav class="nav-links" aria-label="Hauptnavigation"><a href="index.html" class="active">FinOps Auditor</a>
+<a href="saas-seat-audit/" class="">SaaS-Sitze</a>
+<a href="ai-token-optimizer/" class="">KI-Tokens</a>
+<a href="cfo-savings-export/" class="">CFO Export</a>
+<a href="pro/" class="">Kit &amp; Rollout</a>
+<a href="legal/" class="">Impressum</a><a href="pro/" class="nav-cta">49 EUR Kit</a></nav>
+    </div>
+  </header>
+  
+  <section class="hero"><div class="container"><h1>KI-Token- &amp; SaaS-Lizenz-Waste-Audit (100 % lokal)</h1><p>Identifizieren Sie sofort tote SaaS-Sitze, Tool-Duplikate (&lt;45 Tage Renewal) sowie überteuerte Frontier-LLM-Calls mit CFO-Einsparungsreport.</p></div></section>
+  <main class="container">
+    <div class="card">
+      <div class="btn-row" style="margin-top:0;margin-bottom:14px;">
+        <button type="button" class="btn" id="sample1Btn">Demo: Agentur (SaaS + Frontier-LLM)</button>
+        <button type="button" class="btn" id="sample2Btn">Demo: Konsolidiert (Clean)</button>
+        <button type="button" class="btn" id="sample3Btn">Demo: AI-Support Pipeline (Caching + Mini)</button>
+      </div>
+      <div class="form-grid">
+        <div><label for="profileInput">Unternehmen / Kostenstelle</label><input type="text" id="profileInput" /></div>
+        <div><label for="modeSelect">Audit-Fokus</label><select id="modeSelect"><option value="komplett">SaaS-Sitze + KI-Tokens kombiniert</option><option value="saas">Fokus SaaS-Lizenzen</option><option value="ai">Fokus KI-Tokens</option></select></div>
+        <div><label for="toneSelect">Report-Tonalität</label><select id="toneSelect"><option value="executive">CFO Executive Summary</option><option value="streng">Sofortiger Kündigungs-/Downgrade-Stopp</option></select></div>
+      </div>
+      <div class="btn-row"><button type="button" class="btn btn-primary" id="runCheckBtn">FinOps-Waste berechnen</button></div>
+    </div>
+
+    <div id="resultCard" class="card hidden">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;">
+        <h2 id="resultHeadline" style="margin:0;">Ergebnis</h2>
+        <div class="btn-row" style="margin:0;">
+          <button type="button" class="btn btn-primary" id="copyActionBtn">Maßnahmentext kopieren</button>
+          <button type="button" class="btn" id="dlCsvBtn">CSV Export (.csv)</button>
+          <button type="button" class="btn" id="dlJsonBtn">JSON Audit (.json)</button>
+        </div>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi-box"><div class="kpi-label">Audit-Effizienz</div><div class="kpi-val" id="kpi1Val">-</div></div>
+        <div class="kpi-box"><div class="kpi-label">Erkannte Blocker</div><div class="kpi-val" id="kpi2Val">-</div></div>
+        <div class="kpi-box"><div class="kpi-label">Einsparung / Monat</div><div class="kpi-val" id="kpi3Val">-</div></div>
+        <div class="kpi-box"><div class="kpi-label">Einsparung / Jahr</div><div class="kpi-val" id="kpi4Val">-</div></div>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Position &amp; Kategorie</th><th>Kennzahl</th><th>Effekt</th><th>Status</th><th>Prüfhinweis</th></tr></thead><tbody id="entriesBody"></tbody></table></div>
+      <h3>CFO-Einsparungs-Memo &amp; Kündigungsliste</h3>
+      <textarea id="actionBox" readonly aria-label="Maßnahmentext"></textarea>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="offer-card highlight"><div><span class="badge badge-pass">CDC-FINOPS-01 · 49 EUR</span><h3>CheDataCheck FinOps, KI-Token &amp; SaaS Audit-Kit</h3><div class="offer-price">49 EUR</div><p class="muted">4-Tab FinOps-Excel (Seat-Matrix, KI-Token-Rechner, Renewal-Tracker, Savings-KPI), Playbook PDF &amp; Offline Node.js Audit-CLI.</p></div><div class="btn-row"><a href="https://payhip.com/b/uVaxJ" class="btn btn-primary">49 EUR Kit bestellen</a><a href="pro/" class="btn">Details</a></div></div>
+      <div class="offer-card"><div><span class="badge badge-warn">CDC-FINOPS-ROLLOUT · 2900 EUR</span><h3>CheDataCheck FinOps &amp; AI-Spend Rollout (Festpreis)</h3><div class="offer-price">2900 EUR</div><p class="muted">Festpreis-Audit für Top-30 SaaS-Verträge &amp; Produktiv-LLM-Pipelines inkl. Einspar-Roadmap &amp; Kündigungskalender.</p></div><div class="btn-row"><a href="https://buy.stripe.com/28EfZa9stfUye5WfDH2400d" class="btn btn-dark">2900 EUR Rollout buchen</a><a href="pro/" class="btn">Umfang</a></div></div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <p><strong>CheDataCheck FinOps</strong> — Ungenutzte SaaS-Lizenzen, doppelte Tool-Kategorien, Renewal-Alerts &amp; KI-Token-Downgrade-Potenziale lokal berechnen.</p>
+      <p>Che Goncalves Menendez · CheDataCheck · by VeriTakt Collective (Gewerbe: ImportKlar) · Liegnitzstr. 53A, 28237 Bremen, Deutschland · Umsatzsteuerbefreit gemäß § 19 UStG (Kleinunternehmerregelung)</p>
+      <p><a href="legal/">Impressum &amp; DSGVO</a> · <a href="pro/">49 EUR Kit &amp; 2900 EUR Rollout</a> · <a href="https://cheresonanz-design.github.io/opskanon-directory/" target="_blank" rel="noopener">Gelistet auf OpsKanon</a></p>
+    </div>
+  </footer>
+  <script src="assets/finops_waste_engine.js"></script><script src="assets/app.js"></script>
+</body>
+</html>

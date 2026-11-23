@@ -1,0 +1,6 @@
+# CheDataCheck FinOps (by VeriTakt Collective)
+> Ungenutzte SaaS-Lizenzen, doppelte Tool-Kategorien, Renewal-Alerts & KI-Token-Downgrade-Potenziale lokal berechnen.
+
+- App: https://cheresonanz-design.github.io/chedatacheck-finops-audit/
+- Offers: https://cheresonanz-design.github.io/chedatacheck-finops-audit/pro/
+- Legal: https://cheresonanz-design.github.io/chedatacheck-finops-audit/legal/
