@@ -35,29 +35,45 @@
         <div><label for="modeSelect">Audit-Fokus</label><select id="modeSelect"><option value="komplett">SaaS-Sitze + KI-Tokens kombiniert</option><option value="saas">Fokus SaaS-Lizenzen</option><option value="ai">Fokus KI-Tokens</option></select></div>
         <div><label for="toneSelect">Report-Tonalität</label><select id="toneSelect"><option value="executive">CFO Executive Summary</option><option value="streng">Sofortiger Kündigungs-/Downgrade-Stopp</option></select></div>
       </div>
+
       <div class="divider-top">
-        <div style="font-size:0.86rem;font-weight:700;margin-bottom:8px;">Eigene Position hinzufügen (100 % lokal im Browser)</div>
+        <div style="font-size:0.86rem;font-weight:700;margin-bottom:8px;">1. Eigenen SaaS-Vertrag hinzufügen (EUR, 100 % lokal)</div>
         <div class="inline-grid">
-          <div><label for="posIdInput">Pos-ID</label><input type="text" id="posIdInput" placeholder="z. B. POS-04" /></div>
-          <div><label for="posLabelInput">Bezeichnung / Position</label><input type="text" id="posLabelInput" placeholder="Eigene Position eingeben..." /></div>
-          <div><label for="posCategoryInput">Kategorie</label><input type="text" id="posCategoryInput" placeholder="z. B. Prüfung / Risiko" /></div>
-          <div><label for="posMetricInput">Kennzahl</label><input type="number" id="posMetricInput" step="0.01" value="80" /></div>
-          <div><label for="posImpactInput">Effekt (EUR)</label><input type="number" id="posImpactInput" step="0.01" value="0" /></div>
-          <div><label for="posStatusSelect">Status</label><select id="posStatusSelect"><option value="AUTO">Automatik</option><option value="PASS">PASS</option><option value="WARN">WARN</option><option value="FAIL">FAIL</option></select></div>
-          <div><label for="posNoteInput">Prüfhinweis</label><input type="text" id="posNoteInput" placeholder="Kurzer Hinweis oder Maßnahme" /></div>
+          <div><label for="saasVendorInput">Tool / Anbieter</label><input type="text" id="saasVendorInput" placeholder="z. B. Slack Pro" /></div>
+          <div><label for="saasCatInput">Kategorie (Duplikat-Prüfung)</label><input type="text" id="saasCatInput" placeholder="z. B. Wiki / Design" /></div>
+          <div><label for="saasPurchasedInput">Gekaufte Sitze</label><input type="number" id="saasPurchasedInput" value="20" min="1" /></div>
+          <div><label for="saasActiveInput">Aktive Sitze (30d)</label><input type="number" id="saasActiveInput" value="12" min="0" /></div>
+          <div><label for="saasPriceInput">Preis/Sitz (EUR)</label><input type="number" id="saasPriceInput" step="0.01" value="15" min="0" /></div>
+          <div><label for="saasCycleSelect">Abrechnung</label><select id="saasCycleSelect"><option value="monthly">Monatlich</option><option value="annual">Jährlich (EUR/Jahr)</option></select></div>
+          <div><label for="saasRenewInput">Tage bis Renewal</label><input type="number" id="saasRenewInput" value="30" min="0" /></div>
+        </div>
+        <div class="btn-row"><button type="button" class="btn" id="addSaasBtn">+ SaaS-Vertrag hinzufügen</button></div>
+      </div>
+
+      <div class="divider-top">
+        <div style="font-size:0.86rem;font-weight:700;margin-bottom:8px;">2. Eigenen KI-Token-Workflow hinzufügen (GPT-4o / Claude / Gemini)</div>
+        <div class="inline-grid">
+          <div><label for="aiWorkflowInput">Workflow-Name</label><input type="text" id="aiWorkflowInput" placeholder="z. B. Rechnungs-OCR" /></div>
+          <div><label for="aiModelSelect">Modell</label><select id="aiModelSelect"><option value="gpt-4o">gpt-4o (2,30 / 9,20 EUR per 1M)</option><option value="gpt-4o-mini">gpt-4o-mini</option><option value="claude-sonnet">claude-sonnet</option><option value="claude-haiku">claude-haiku</option><option value="gemini-pro">gemini-pro</option><option value="gemini-flash">gemini-flash</option></select></div>
+          <div><label for="aiCallsInput">Calls / Monat</label><input type="number" id="aiCallsInput" value="50000" min="0" /></div>
+          <div><label for="aiInTokInput">Ø Input-Tokens</label><input type="number" id="aiInTokInput" value="2200" min="0" /></div>
+          <div><label for="aiOutTokInput">Ø Output-Tokens</label><input type="number" id="aiOutTokInput" value="250" min="0" /></div>
+          <div><label for="aiComplexSelect">Komplexität</label><select id="aiComplexSelect"><option value="simple">Einfach (Routing-fähig)</option><option value="complex">Komplex (Frontier nötig)</option></select></div>
+          <div><label for="aiCacheCheck">Prompt-Caching aktiv?</label><input type="checkbox" id="aiCacheCheck" /></div>
         </div>
         <div class="btn-row">
           <button type="button" class="btn btn-primary" id="runCheckBtn">FinOps-Waste berechnen</button>
-          <button type="button" class="btn" id="addItemBtn">+ Position hinzufügen</button>
-          <button type="button" class="btn" id="clearItemsBtn">Positionen leeren</button>
+          <button type="button" class="btn" id="addAiBtn">+ KI-Workflow hinzufügen</button>
+          <button type="button" class="btn" id="clearItemsBtn">Alle leeren</button>
         </div>
-        <details style="margin-top:12px;">
-          <summary style="cursor:pointer;font-size:0.86rem;font-weight:700;color:var(--slate-500);">CSV / Semikolon-Stapelimport &amp; Direktbearbeitung</summary>
-          <p class="muted" style="margin:6px 0 8px;">Format: <code>ID;Kategorie;Position;Kennzahl;Effekt_EUR;Status;Hinweis</code> (Semikolon oder Komma, lokal im Browser verarbeitet).</p>
-          <textarea id="batchCsvInput" aria-label="CSV Stapelimport"></textarea>
-          <div class="btn-row"><button type="button" class="btn" id="applyCsvBtn">CSV übernehmen &amp; prüfen</button></div>
-        </details>
       </div>
+
+      <details style="margin-top:12px;">
+        <summary style="cursor:pointer;font-size:0.86rem;font-weight:700;color:var(--slate-500);">CSV-Stapelimport (SAAS &amp; AI Zeilen)</summary>
+        <p class="muted" style="margin:6px 0 8px;">Format: <code>SAAS;Vendor;Kategorie;Sitze;Aktiv;EUR;monthly|annual;RenewalTage</code> oder <code>AI;Workflow;Modell;Calls;InTok;OutTok;simple|complex;0|1</code></p>
+        <textarea id="batchCsvInput" aria-label="CSV Stapelimport"></textarea>
+        <div class="btn-row"><button type="button" class="btn" id="applyCsvBtn">CSV übernehmen &amp; prüfen</button></div>
+      </details>
     </div>
 
     <div id="resultCard" class="card hidden">
@@ -75,21 +91,20 @@
         <div class="kpi-box"><div class="kpi-label">Einsparung / Monat</div><div class="kpi-val" id="kpi3Val">-</div></div>
         <div class="kpi-box"><div class="kpi-label">Einsparung / Jahr</div><div class="kpi-val" id="kpi4Val">-</div></div>
       </div>
-      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Position &amp; Kategorie</th><th>Kennzahl</th><th>Effekt</th><th>Status</th><th>Prüfhinweis</th><th>Aktion</th></tr></thead><tbody id="entriesBody"></tbody></table></div>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Position &amp; Ist-Kosten</th><th>Auslastung / Calls</th><th>Einsparung/Mo.</th><th>Status</th><th>Empfehlung</th><th>Aktion</th></tr></thead><tbody id="entriesBody"></tbody></table></div>
       <h3>CFO-Einsparungs-Memo &amp; Kündigungsliste</h3>
       <textarea id="actionBox" readonly aria-label="Maßnahmentext"></textarea>
     </div>
 
     <div class="pricing-grid">
-      <div class="offer-card highlight"><div><span class="badge badge-pass">CDC-FINOPS-01 · 49 EUR</span><h3>CheDataCheck FinOps, KI-Token &amp; SaaS Audit-Kit</h3><div class="offer-price">49 EUR</div><p class="muted">4-Tab FinOps-Excel (Seat-Matrix, KI-Token-Rechner, Renewal-Tracker, Savings-KPI), Playbook PDF &amp; Offline Node.js Audit-CLI.</p></div><div class="btn-row"><a href="https://payhip.com/b/y8xdP" class="btn btn-primary">49 EUR Kit bestellen</a><a href="pro/" class="btn">Details</a></div></div>
-      <div class="offer-card"><div><span class="badge badge-warn">CDC-FINOPS-ROLLOUT · 2900 EUR</span><h3>CheDataCheck FinOps &amp; AI-Spend Rollout (Festpreis)</h3><div class="offer-price">2900 EUR</div><p class="muted">Festpreis-Audit für Top-30 SaaS-Verträge &amp; Produktiv-LLM-Pipelines inkl. Einspar-Roadmap &amp; Kündigungskalender.</p></div><div class="btn-row"><a href="https://buy.stripe.com/28EfZa9stfUye5WfDH2400d" class="btn btn-dark">2900 EUR Rollout buchen</a><a href="pro/" class="btn">Umfang</a></div></div>
+      <div class="offer-card highlight"><div><span class="badge badge-pass">CDC-FINOPS-01 · 49 EUR</span><h3>CheDataCheck FinOps, KI-Token &amp; SaaS Audit-Kit</h3><div class="offer-price">49 EUR</div><p class="muted">4-Tab FinOps-Excel (Seat-Matrix, KI-Token-Rechner, Renewal-Tracker, Savings-KPI), Playbook PDF &amp; Offline Node.js Audit-CLI.</p></div><div class="btn-row"><a href="https://payhip.com/b/y8xdP" class="btn btn-primary" target="_blank" rel="noopener">49 EUR Kit bestellen</a><a href="pro/" class="btn">Details</a></div></div>
+      <div class="offer-card"><div><span class="badge badge-warn">CDC-FINOPS-ROLLOUT · 2900 EUR</span><h3>CheDataCheck FinOps &amp; AI-Spend Rollout (Festpreis)</h3><div class="offer-price">2900 EUR</div><p class="muted">Festpreis-Audit für Top-30 SaaS-Verträge &amp; Produktiv-LLM-Pipelines inkl. Einspar-Roadmap &amp; Kündigungskalender.</p></div><div class="btn-row"><a href="https://buy.stripe.com/28EfZa9stfUye5WfDH2400d" class="btn btn-dark" target="_blank" rel="noopener">2900 EUR Rollout buchen</a><a href="pro/" class="btn">Umfang</a></div></div>
     </div>
   </main>
   <footer class="footer">
     <div class="container">
       <p><strong>CheDataCheck FinOps</strong> — Ungenutzte SaaS-Lizenzen, doppelte Tool-Kategorien, Renewal-Alerts &amp; KI-Token-Downgrade-Potenziale lokal berechnen.</p>
       <p>Che Goncalves Menendez · CheDataCheck · by VeriTakt Collective (Gewerbe: ImportKlar) · Liegnitzstr. 53A, 28237 Bremen, Deutschland · Umsatzsteuerbefreit gemäß § 19 UStG (Kleinunternehmerregelung)</p>
-      <p>Hinweis: Orientierungshilfe mit Beispieldaten, keine Rechts-, Steuer-, Medizin- oder Versicherungsberatung und keine Garantie auf Richtigkeit. Bestellungen und Anfragen bearbeite ich persönlich per E-Mail.</p>
       <p><a href="legal/">Impressum &amp; DSGVO</a> · <a href="pro/">49 EUR Kit &amp; 2900 EUR Rollout</a> · <a href="https://cheresonanz-design.github.io/opskanon-directory/" target="_blank" rel="noopener">Gelistet auf OpsKanon</a></p>
     </div>
   </footer>
